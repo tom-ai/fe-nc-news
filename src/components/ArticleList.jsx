@@ -20,6 +20,7 @@ function ArticleList() {
             <ArticleCard
               article_id={article.article_id}
               title={article.title}
+              author={article.author}
               topic={article.topic}
               body={article.body}
             />
