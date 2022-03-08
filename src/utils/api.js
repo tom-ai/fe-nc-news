@@ -4,8 +4,6 @@ const api = axios.create({
   baseURL: "https://nc-news-tomharris.herokuapp.com/api",
 });
 
-console.log(api);
-
 export function getTopics() {
   return api.get("/topics").then((res) => {
     return res.data.topics;

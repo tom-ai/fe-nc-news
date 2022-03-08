@@ -7,7 +7,7 @@ import Header from "./components/Header";
 function App() {
   return (
     <BrowserRouter>
-      <>
+      <div className="mw6-m mw7-ns center">
         <Header />
         <Topics />
         <Routes>
@@ -17,7 +17,7 @@ function App() {
             //route for article/:article_id
           }
         </Routes>
-      </>
+      </div>
     </BrowserRouter>
   );
 }

@@ -9,23 +9,29 @@ function Topics() {
     api.getTopics().then((topics) => setTopics(topics));
   }, []);
 
-  {
-    console.log(topics);
-  }
   return (
     <>
-      <h2>Topics</h2>
       <nav>
-        <Link key="latest" to="/">
-          Latest
-        </Link>
-        {topics.map((topic) => {
-          return (
-            <Link key={topic.slug} to={`/topics/${topic.slug}`}>
-              {topic.slug}
-            </Link>
-          );
-        })}
+        <div className="">
+          <Link
+            className="w-15 f3 f4-m ttu link dim ph3 pv3 dib light-yellow bg-dark-red"
+            key="latest"
+            to="/"
+          >
+            Latest
+          </Link>
+          {topics.map((topic) => {
+            return (
+              <Link
+                className="w-15 f3 f4-m ttu link dim ph3 pv3 dib light-yellow bg-dark-red"
+                key={topic.slug}
+                to={`/topics/${topic.slug}`}
+              >
+                {topic.slug}
+              </Link>
+            );
+          })}
+        </div>
       </nav>
     </>
   );
