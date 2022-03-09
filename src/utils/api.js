@@ -15,3 +15,9 @@ export function getArticles() {
     return res.data.articles;
   });
 }
+
+export function getArticleById(articleId) {
+  return api.get(`/articles/${articleId}`).then((res) => {
+    return res.data.article;
+  });
+}
