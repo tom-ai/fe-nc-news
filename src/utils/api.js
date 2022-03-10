@@ -10,15 +10,17 @@ export function getTopics() {
   });
 }
 
-export function getArticles(topicSlug) {
-  if (!topicSlug) {
-    return api.get(`/articles`).then((res) => {
+export function getArticles(currentTopic, sort) {
+  return api
+    .get(`/articles`, {
+      params: {
+        topic: currentTopic,
+        sort_by: sort,
+      },
+    })
+    .then((res) => {
       return res.data.articles;
     });
-  }
-  return api.get(`/articles/?topic=${topicSlug}`).then((res) => {
-    return res.data.articles;
-  });
 }
 
 export function getArticleById(articleId) {

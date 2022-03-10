@@ -4,14 +4,18 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as api from "../utils/api";
 
-function Sort() {
-  const [sortQuery, setSortQuery] = useState([]);
+function Sort({ currentTopic, setArticles }) {
+  const [sort, setSort] = useState();
 
-  const handleChange = (e) => {
-    setSortQuery(e.target.value);
+  const handleSort = (e) => {
+    setSort(e.target.value);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    api.getArticles(currentTopic, sort).then((articles) => {
+      setArticles(articles);
+    });
+  }, [sort]);
 
   return (
     <>
@@ -19,8 +23,8 @@ function Sort() {
         <form>
           <fieldset id="sort" className="ba b--transparent ph0 mh0">
             <label htmlFor="sort_by">Sort by:</label>
-            <select onChange={handleChange} name="sort_by" id="sort_by">
-              <option id="date" value="date">
+            <select onChange={handleSort} name="sort_by" id="sort_by">
+              <option id="created_at" value="created_at">
                 Most recent
               </option>
               <option id="title" value="title">
