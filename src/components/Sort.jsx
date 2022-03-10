@@ -11,11 +11,7 @@ function Sort() {
     setSortQuery(e.target.value);
   };
 
-  useEffect(() => {
-    api.getArticleByQuery(sortQuery).then((res) => {
-      console.log();
-    });
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
