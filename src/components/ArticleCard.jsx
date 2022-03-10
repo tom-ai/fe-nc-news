@@ -13,7 +13,12 @@ export function ArticleCard({
     <li key={article_id}>
       <article className="mb6 ">
         <dl>
-          <h3 className="f3 f2-l">{title}</h3>
+          <Link
+            to={`/articles/${article_id}`}
+            className="link underline-hover dark-red"
+          >
+            <h3 className="f3 f2-l">{title}</h3>
+          </Link>
           <div className="flex items-center mb3 ">
             <img
               src="https://www.springboardstories.co.uk/images/gallery/products/Topics/myths/resources/GreenMan/SS7-A4-Poster.jpg"
@@ -39,7 +44,10 @@ export function ArticleCard({
             </Link>
           </div>
           <div className="flex items-center justify-between">
-            <Link to="/" className="f4 f3-l link underline-hover dark-red">
+            <Link
+              to={`/articles/${article_id}`}
+              className="f4 f3-l link underline-hover dark-red"
+            >
               {comment_count} comments
             </Link>
             <dt className="grow f4 f3-l pr4">👍 {votes}</dt>
