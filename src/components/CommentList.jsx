@@ -13,19 +13,18 @@ function CommentList({ commentCount, articleId }) {
   return (
     <>
       <div className="pa3 flex items-center">
-        <h3>Comments</h3>
+        <h4>Comments</h4>
         <div className="mh3">
           <dl>{commentCount}</dl>
         </div>
       </div>
-
-      <h3>Post a comment</h3>
-
-      <ul>
-        {comments.map((comment) => {
-          return <CommentCard key={comment.comment_id} comment={comment} />;
-        })}
-      </ul>
+      <div className="pa3">
+        <ul className="list pl0">
+          {comments.map((comment) => {
+            return <CommentCard key={comment.comment_id} comment={comment} />;
+          })}
+        </ul>
+      </div>
     </>
   );
 }

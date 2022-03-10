@@ -5,7 +5,7 @@ function CommentCard({ comment }) {
     <>
       <li>
         <div className="flex flex-column">
-          <h4>{author}</h4>
+          <h5 className="mb1">{author}</h5>
           <p>{body}</p>
         </div>
       </li>
