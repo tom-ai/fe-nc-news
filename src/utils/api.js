@@ -10,8 +10,13 @@ export function getTopics() {
   });
 }
 
-export function getArticles() {
-  return api.get(`/articles`).then((res) => {
+export function getArticles(topicSlug) {
+  if (!topicSlug) {
+    return api.get(`/articles`).then((res) => {
+      return res.data.articles;
+    });
+  }
+  return api.get(`/articles/?topic=${topicSlug}`).then((res) => {
     return res.data.articles;
   });
 }
