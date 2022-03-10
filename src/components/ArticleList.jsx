@@ -15,7 +15,7 @@ function ArticleList({ topics }) {
   useEffect(() => {
     setIsLoading(true);
     api.getArticles(topicSlug).then((articles) => {
-      setArticles(articles);
+      setArticles((articles)); 
       setCurrentTopic(topicSlug);
       setIsLoading(false);
     });
