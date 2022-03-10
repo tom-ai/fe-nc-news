@@ -1,25 +1,25 @@
 import Article from "./Article";
-import CommentList from "./CommentList";
+
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as api from "../utils/api";
+import Loading from "./Loading";
 
 function ArticlePage() {
-  {
-    // api request article by id
-    // new set state of article
-    // passing down as props to Article
-  }
+  const [article, setArticle] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { article_id: id } = useParams();
 
-  const [article, setArticle] = useState([]);
-
   useEffect(() => {
+    setIsLoading(true);
     api.getArticleById(id).then((article) => {
       setArticle(article);
+      setIsLoading(false);
     });
   }, []);
+
+  if (isLoading) return <Loading />;
 
   return (
     <>
