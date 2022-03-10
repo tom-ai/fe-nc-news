@@ -1,11 +1,14 @@
 import { ReactComponent as CaretUp } from "../icons/caret-up.svg";
 import { ReactComponent as CaretDown } from "../icons/caret-down.svg";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as api from "../utils/api";
 
 function Sort({ currentTopic, setArticles }) {
   const [sort, setSort] = useState();
+  const [order, setOrder] = useState();
+
+  const [searchParams] = useSearchParams();
 
   const handleSort = (e) => {
     setSort(e.target.value);
@@ -28,11 +31,8 @@ function Sort({ currentTopic, setArticles }) {
                 Most recent
               </option>
               <option id="title" value="title">
-                Title A - Z
+                Title Z - A
               </option>
-              {/* <option id="votes" value="votes">
-                Vote Count
-              </option> */}
             </select>
           </fieldset>
         </form>
@@ -49,8 +49,7 @@ function Sort({ currentTopic, setArticles }) {
           </div>
         </div>
         <div className="f5 f4-l">ASC</div>
-      </Link>
- */}
+      </Link> */}
     </>
   );
 }

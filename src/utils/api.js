@@ -10,12 +10,16 @@ export function getTopics() {
   });
 }
 
-export function getArticles(currentTopic, sort) {
+export function getArticles(currentTopic, sort, order) {
+  // if sort = title
+  // const order = asc
+
   return api
     .get(`/articles`, {
       params: {
         topic: currentTopic,
         sort_by: sort,
+        order: order,
       },
     })
     .then((res) => {
