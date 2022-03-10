@@ -1,4 +1,5 @@
 import Article from "./Article";
+import CommentList from "./CommentList";
 
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -34,7 +35,10 @@ function ArticlePage() {
         topic={article.topic}
         votes={article.votes}
       />
-      {/* <CommentList /> */}
+      <CommentList
+      commentCount={article.comment_count}
+      articleId={article.article_id}
+       />
     </>
   );
 }
