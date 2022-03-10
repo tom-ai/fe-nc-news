@@ -11,14 +11,29 @@ function Sort({ currentTopic, setArticles }) {
   const [searchParams] = useSearchParams();
 
   const handleSort = (e) => {
-    setSort(e.target.value);
+    const sort = e.target.value;
+
+    if (sort === "title_a-z") {
+      setSort("title");
+      setOrder("asc");
+    } else if (sort === "title_z-a") {
+      setSort("title");
+      setOrder("desc");
+    }
+    if (sort === "recent") {
+      setSort("created_at");
+      setOrder("desc");
+    } else if (sort === "oldest") {
+      setSort("created_at");
+      setOrder("asc");
+    }
   };
 
   useEffect(() => {
-    api.getArticles(currentTopic, sort).then((articles) => {
+    api.getArticles(currentTopic, sort, order).then((articles) => {
       setArticles(articles);
     });
-  }, [sort]);
+  }, [sort, order]);
 
   return (
     <>
@@ -27,10 +42,16 @@ function Sort({ currentTopic, setArticles }) {
           <fieldset id="sort" className="ba b--transparent ph0 mh0">
             <label htmlFor="sort_by">Sort by:</label>
             <select onChange={handleSort} name="sort_by" id="sort_by">
-              <option id="created_at" value="created_at">
+              <option id="recent" value="recent">
                 Most recent
               </option>
-              <option id="title" value="title">
+              <option id="oldest" value="oldest">
+                Oldest first
+              </option>
+              <option id="title_a-z" value="title_a-z">
+                Title A - Z
+              </option>
+              <option id="title_z-a" value="title_z-a">
                 Title Z - A
               </option>
             </select>
