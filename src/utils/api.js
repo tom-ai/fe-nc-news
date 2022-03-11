@@ -27,10 +27,13 @@ export function getArticleById(articleId) {
   });
 }
 
-
 export function updateArticleVoteCount(articleId, incAmount) {
-  return api.patch(`/articles/${articleId}`, { inc_votes: incAmount }).then((res) => {
-    return res.data.updatedArticle;
+  return api
+    .patch(`/articles/${articleId}`, { inc_votes: incAmount })
+    .then((res) => {
+      return res.data.updatedArticle;
+    });
+}
 
 export function getComments(articleId) {
   return api.get(`articles/${articleId}/comments`).then((res) => {
