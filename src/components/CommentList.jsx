@@ -7,11 +7,9 @@ function CommentList({ commentCount, articleId, users }) {
   const [comments, setComments] = useState([]);
   useEffect(() => {
     api.getComments(articleId).then((comments) => {
-      setComments((currComments) => {
-        return [...currComments, comments];
-      });
+      setComments(comments);
     });
-  }, []);
+  }, [comments]);
 
   return (
     <>
