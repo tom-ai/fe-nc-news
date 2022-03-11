@@ -26,3 +26,10 @@ export function getArticleById(articleId) {
     return res.data.article;
   });
 }
+
+export function updateArticleVoteCount(articleId) {
+  return api.patch(`/articles/${articleId}`, { inc_votes: 1 }).then((res) => {
+    console.log("back from api;", res.data.updatedArticle);
+    return res.data.updatedArticle;
+  });
+}
