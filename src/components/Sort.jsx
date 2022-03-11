@@ -27,6 +27,10 @@ function Sort({ currentTopic, setArticles }) {
       setSort("created_at");
       setOrder("asc");
     }
+    if (sort === "most_comments") {
+      setSort("comment_count");
+      setOrder("desc");
+    }
   };
 
   useEffect(() => {
@@ -53,6 +57,9 @@ function Sort({ currentTopic, setArticles }) {
               </option>
               <option id="title_z-a" value="title_z-a">
                 Title Z - A
+              </option>
+              <option id="most_comments" value="most_comments">
+                Most Comments
               </option>
             </select>
           </fieldset>
