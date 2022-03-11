@@ -14,7 +14,7 @@ function Article({
   return (
     <>
       <section className="pa3">
-        <h3>{title}</h3>
+        <h3 className="f3 f2-l">{title}</h3>
 
         <div className="flex items-center mb3">
           <div className="f6 f5-l br-pill ph3 pv1 dib light-yellow bg-dark-red mr3">

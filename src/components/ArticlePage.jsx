@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import * as api from "../utils/api";
 import Loading from "./Loading";
 
-function ArticlePage() {
+function ArticlePage({ users }) {
   const [article, setArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,9 +36,10 @@ function ArticlePage() {
         votes={article.votes}
       />
       <CommentList
-      commentCount={article.comment_count}
-      articleId={article.article_id}
-       />
+        commentCount={article.comment_count}
+        articleId={article.article_id}
+        users={users}
+      />
     </>
   );
 }
