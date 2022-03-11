@@ -41,7 +41,13 @@ export function getUsers() {
 }
 
 export function postComment(articleId, comment) {
-  return api.post(`/articles/${articleId}/comments`, comment).then((res) => {
-    return res.data.postedComment;
-  });
+  return api
+    .post(`/articles/${articleId}/comments`, comment)
+    .then((res) => {
+      console.log("in api", res);
+      return res.data.postedComment;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }

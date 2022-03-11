@@ -11,9 +11,7 @@ function CommentList({ commentCount, articleId, users }) {
         return [...currComments, comments];
       });
     });
-  }, [comments]);
-
-  // change useeffect on users change??
+  }, []);
 
   return (
     <>

@@ -3,7 +3,7 @@ import * as api from "../utils/api";
 
 function PostComment({ articleId, users }) {
   const initialFormData = {
-    username: undefined,
+    username: "",
     body: "",
   };
 
@@ -17,8 +17,14 @@ function PostComment({ articleId, users }) {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    api.postComment(articleId, formData);
+    if (formData.username === "") {
+      // do something here like isLoading
+    } else if (formData.body === "") {
+      // do something here like isLoading
+    } else {
+      e.preventDefault();
+      api.postComment(articleId, formData);
+    }
   };
 
   return (
@@ -35,8 +41,8 @@ function PostComment({ articleId, users }) {
               id="username"
               className="f5 f4-l ph2 pv1 br3"
               onChange={handleChange}
-              //   defaultValue={users[0].username}
             >
+              <option key="default">Choose Username</option>
               {users.map(({ username }) => {
                 return (
                   <option key={username} id={username} value={username}>

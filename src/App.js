@@ -8,11 +8,10 @@ import { useState, useEffect } from "react";
 import * as api from "./utils/api";
 
 function App() {
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     api.getUsers().then((users) => {
-      console.log(users);
       setUsers(users);
     });
   }, []);
