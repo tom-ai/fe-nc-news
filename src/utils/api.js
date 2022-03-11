@@ -26,3 +26,9 @@ export function getArticleById(articleId) {
     return res.data.article;
   });
 }
+
+export function getComments(articleId) {
+  return api.get(`articles/${articleId}/comments`).then((res) => {
+    return res.data.comments;
+  });
+}
