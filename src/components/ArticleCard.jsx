@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Vote from "./Vote";
 
 export function ArticleCard({
   article_id,
@@ -50,7 +51,7 @@ export function ArticleCard({
             >
               {comment_count} comments
             </Link>
-            <dt className="grow f4 f3-l pr4">👍 {votes}</dt>
+            <Vote votes={votes} articleId={article_id} />
           </div>
         </dl>
       </article>

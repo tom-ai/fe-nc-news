@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Vote from "./Vote";
 
 function Article({
   articleId,
@@ -23,7 +24,7 @@ function Article({
         </div>
         <p className="f4 f3-l mb4">{body}</p>
         <div className="flex justify-center">
-          <dt className="grow f4 f3-l pr4">👍 {votes}</dt>
+          <Vote articleId={articleId} votes={votes} />
         </div>
       </section>
     </>
