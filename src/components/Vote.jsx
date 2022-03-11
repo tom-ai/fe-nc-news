@@ -3,21 +3,49 @@ import * as api from "../utils/api";
 
 function Vote({ articleId, votes }) {
   const [articleVoteCount, setArticleVoteCount] = useState(votes);
+  const [err, setErr] = useState(null);
 
-  useEffect(() => {}, []);
-
-  const handleClick = () => {
-    setArticleVoteCount((currVotes) => {
-      return currVotes + 1;
-    });
-    api.updateArticleVoteCount(articleId);
+  const handleClick = (e) => {
+    const upOrDown = e.target.id;
+    if (upOrDown === "up") {
+      const incAmount = 1;
+      setArticleVoteCount((currVotes) => currVotes + 1);
+      api.updateArticleVoteCount(articleId, incAmount).catch((err) => {
+        setArticleVoteCount((currVotes) => currVotes - 1);
+        setErr("Something went wrong!");
+      });
+    } else {
+      const incAmount = -1;
+      setArticleVoteCount((currVotes) => currVotes - 1);
+      api.updateArticleVoteCount(articleId, incAmount).catch((err) => {
+        setArticleVoteCount((currVotes) => currVotes - 1);
+        setErr("Something went wrong!");
+      });
+    }
   };
 
-  console.log(articleVoteCount);
+  if (err != null) return <p>{err}</p>;
+
   return (
-    <button onClick={handleClick} className="grow f4 f3-l pr4">
-      👍 {articleVoteCount}
-    </button>
+    <>
+      <div className="flex items-center">
+        <dl className="ph1 b">{articleVoteCount}</dl>
+        <a
+          id="up"
+          onClick={handleClick}
+          className="grow dib f4 f3-l no-underline pa2 pointer"
+        >
+          👍
+        </a>
+        <a
+          id="down"
+          onClick={handleClick}
+          className="grow dib f4 f3-l no-underline pa2 pointer"
+        >
+          👎
+        </a>
+      </div>
+    </>
   );
 }
 

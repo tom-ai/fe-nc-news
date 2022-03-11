@@ -27,9 +27,8 @@ export function getArticleById(articleId) {
   });
 }
 
-export function updateArticleVoteCount(articleId) {
-  return api.patch(`/articles/${articleId}`, { inc_votes: 1 }).then((res) => {
-    console.log("back from api;", res.data.updatedArticle);
+export function updateArticleVoteCount(articleId, incAmount) {
+  return api.patch(`/articles/${articleId}`, { inc_votes: incAmount }).then((res) => {
     return res.data.updatedArticle;
   });
 }
