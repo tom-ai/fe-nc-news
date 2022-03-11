@@ -1,8 +1,10 @@
 import { useState } from "react";
+import * as api from "../utils/api";
 
-function PostComment() {
+function PostComment({ articleId, users }) {
   const initialFormData = {
-    comment: "",
+    username: undefined,
+    body: "",
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -16,21 +18,40 @@ function PostComment() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    api.postComment(articleId, formData);
   };
 
   return (
     <>
       <form>
         <div>
-          <label for="comment" className="f5 b db mb1">
-            Write comment
-          </label>
+          <div className="flex items-end mb2">
+            <label htmlFor="comment" className="f5 f4-l b db mr2">
+              Write comment <span className="normal">as</span>
+            </label>
+            <label htmlFor="username"></label>
+            <select
+              name="username"
+              id="username"
+              className="f5 f4-l ph2 pv1 br3"
+              onChange={handleChange}
+              //   defaultValue={users[0].username}
+            >
+              {users.map(({ username }) => {
+                return (
+                  <option key={username} id={username} value={username}>
+                    {username}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
           <textarea
             onChange={handleChange}
-            id="comment"
-            name="comment"
-            className="db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2"
+            id="body"
+            name="body"
+            className="f4 f3-l db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2"
           ></textarea>
         </div>
       </form>

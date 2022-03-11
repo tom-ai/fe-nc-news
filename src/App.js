@@ -4,8 +4,19 @@ import Topics from "./components/Topics";
 import ArticleList from "./components/ArticleList";
 import Header from "./components/Header";
 import ArticlePage from "./components/ArticlePage";
+import { useState, useEffect } from "react";
+import * as api from "./utils/api";
 
 function App() {
+  const [users, setUsers] = useState();
+
+  useEffect(() => {
+    api.getUsers().then((users) => {
+      console.log(users);
+      setUsers(users);
+    });
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="mw6-m mw7-ns center">
@@ -14,7 +25,10 @@ function App() {
         <Routes>
           <Route path="/" element={<ArticleList />} />
           <Route path="/topics/:topic_id" element={<ArticleList />} />
-          <Route path="/articles/:article_id" element={<ArticlePage />} />
+          <Route
+            path="/articles/:article_id"
+            element={<ArticlePage users={users} />}
+          />
         </Routes>
       </div>
     </BrowserRouter>
