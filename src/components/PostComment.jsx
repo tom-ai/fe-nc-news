@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as api from "../utils/api";
 
 function PostComment({ articleId, users }) {
@@ -23,13 +23,14 @@ function PostComment({ articleId, users }) {
       // do something here like isLoading
     } else {
       e.preventDefault();
+      setFormData(initialFormData);
       api.postComment(articleId, formData);
     }
   };
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <div className="flex items-end mb2">
             <label htmlFor="comment" className="f5 f4-l b db mr2">
@@ -53,16 +54,18 @@ function PostComment({ articleId, users }) {
             </select>
           </div>
 
-          <textarea
+          <input
+            defaultValue={""}
             onChange={handleChange}
             id="body"
             name="body"
             className="f4 f3-l db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2"
-          ></textarea>
+          ></input>
         </div>
       </form>
 
       <button
+        type="submit"
         onClick={handleSubmit}
         className="f5 f4-l grow no-underline br-pill ba bw1 ph3 pv2 mb3 b--dark-red dark-red bg-light-yellow"
       >
