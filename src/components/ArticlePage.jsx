@@ -1,11 +1,12 @@
 import Article from "./Article";
+import CommentList from "./CommentList";
 
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as api from "../utils/api";
 import Loading from "./Loading";
 
-function ArticlePage() {
+function ArticlePage({ users }) {
   const [article, setArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -34,7 +35,11 @@ function ArticlePage() {
         topic={article.topic}
         votes={article.votes}
       />
-      {/* <CommentList /> */}
+      <CommentList
+        commentCount={article.comment_count}
+        articleId={article.article_id}
+        users={users}
+      />
     </>
   );
 }

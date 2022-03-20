@@ -4,10 +4,20 @@ import Topics from "./components/Topics";
 import ArticleList from "./components/ArticleList";
 import Header from "./components/Header";
 import ArticlePage from "./components/ArticlePage";
+import { useState, useEffect } from "react";
+import * as api from "./utils/api";
 
 
 function App() {
-  
+
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    api.getUsers().then((users) => {
+      setUsers(users);
+    });
+  }, []);
+
 
   return (
     <BrowserRouter>
@@ -16,11 +26,12 @@ function App() {
         <Topics />
         <Routes>
           <Route path="/" element={<ArticleList />} />
+
+          <Route path="/topics/:topic_id" element={<ArticleList />} />
           <Route
-            path="/topics/:topic_id"
-            element={<ArticleList />}
+            path="/articles/:article_id"
+            element={<ArticlePage users={users} />}
           />
-          <Route path="/articles/:article_id" element={<ArticlePage />} />
         </Routes>
       </div>
     </BrowserRouter>
