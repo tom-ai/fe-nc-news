@@ -5,15 +5,18 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "./Loading";
 
-function ArticleList() {
+function ArticleList({ topics }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { topic_id: topicSlug } = useParams();
 
+  const [currentTopic, setCurrentTopic] = useState();
+
   useEffect(() => {
     setIsLoading(true);
     api.getArticles(topicSlug).then((articles) => {
-      setArticles(articles);
+      setArticles((articles)); 
+      setCurrentTopic(topicSlug);
       setIsLoading(false);
     });
   }, [topicSlug]);
@@ -25,7 +28,7 @@ function ArticleList() {
         <h2 className="f1-l f2 bold ttu o-50">
           {topicSlug ? topicSlug : "Latest"}
         </h2>
-        <Sort />
+        <Sort currentTopic={currentTopic} setArticles={setArticles} />
       </div>
       <ul className="list pl0">
         {articles.map((article) => {

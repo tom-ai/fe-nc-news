@@ -11,15 +11,20 @@ export function getTopics() {
   });
 }
 
-export function getArticles(topicSlug) {
-  if (!topicSlug) {
-    return api.get(`/articles`).then((res) => {
+export function getArticles(currentTopic, sort, order) {
+  // if sort = title
+  // const order = asc
+  return api
+    .get(`/articles`, {
+      params: {
+        topic: currentTopic,
+        sort_by: sort,
+        order: order,
+      },
+    })
+    .then((res) => {
       return res.data.articles;
     });
-  }
-  return api.get(`/articles/?topic=${topicSlug}`).then((res) => {
-    return res.data.articles;
-  });
 }
 
 export function getArticleById(articleId) {
