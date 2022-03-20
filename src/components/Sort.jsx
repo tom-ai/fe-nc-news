@@ -8,8 +8,6 @@ function Sort({ currentTopic, setArticles }) {
   const [sort, setSort] = useState();
   const [order, setOrder] = useState();
 
-  const [searchParams] = useSearchParams();
-
   const handleSort = (e) => {
     const sort = e.target.value;
 
@@ -27,11 +25,17 @@ function Sort({ currentTopic, setArticles }) {
       setSort("created_at");
       setOrder("asc");
     }
-    if (sort === "most_comments") {
-      setSort("comment_count");
+    if (sort === "most_votes") {
+      setSort("votes");
       setOrder("desc");
+    } else if (sort === "least_votes") {
+      setSort("votes");
+      setOrder("asc");
     }
   };
+
+  // console.log("sort: ", sort);
+  // console.log("order: ", order);
 
   useEffect(() => {
     api.getArticles(currentTopic, sort, order).then((articles) => {
@@ -44,7 +48,10 @@ function Sort({ currentTopic, setArticles }) {
       <div>
         <form>
           <fieldset id="sort" className="ba b--transparent ph0 mh0">
-            <label htmlFor="sort_by">Sort by:</label>
+            <label className="o-0" htmlFor="sort_by">
+              Sort by:
+            </label>
+
             <select onChange={handleSort} name="sort_by" id="sort_by">
               <option id="recent" value="recent">
                 Most recent
@@ -58,8 +65,11 @@ function Sort({ currentTopic, setArticles }) {
               <option id="title_z-a" value="title_z-a">
                 Title Z - A
               </option>
-              <option id="most_comments" value="most_comments">
-                Most Comments
+              <option id="most_votes" value="most_votes">
+                Most Votes
+              </option>
+              <option id="least_votes" value="least_votes">
+                Least Votes
               </option>
             </select>
           </fieldset>
