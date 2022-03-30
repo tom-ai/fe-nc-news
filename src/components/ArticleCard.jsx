@@ -26,10 +26,9 @@ export function ArticleCard({
               className="br-100 h3 w3 dib mr2 "
               alt="avatar"
             />
-            <Link to="/" className="f4 f3-l link underline-hover dark-red mr3">
-              @{author}
-            </Link>
-
+            <div className="f4 f3-l pointer_default dark-red mr3">
+              <dt>@{author}</dt>
+            </div>
             <div className="f6 f5-l br-pill ph3 pv1 dib light-yellow bg-dark-red mr3">
               <dt>{topic}</dt>
             </div>
