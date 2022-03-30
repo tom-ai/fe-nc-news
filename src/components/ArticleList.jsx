@@ -11,16 +11,26 @@ function ArticleList({ topics }) {
   const { topic_id: topicSlug } = useParams();
   const [currentTopic, setCurrentTopic] = useState();
 
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     setIsLoading(true);
-    api.getArticles(topicSlug).then((articles) => {
-      setArticles(articles);
-      setCurrentTopic(topicSlug);
-      setIsLoading(false);
-    });
+    api
+      .getArticles(topicSlug)
+      .then((articles) => {
+        console.log("hellop");
+        setArticles(articles);
+        setCurrentTopic(topicSlug);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log("error!");
+        setError({ err });
+      });
   }, [topicSlug]);
 
   if (isLoading) return <Loading />;
+  // if (error) return <p>{error}</p>;
   return (
     <div className="pa3">
       <div className=" flex items-center justify-between ">

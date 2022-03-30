@@ -6,10 +6,9 @@ import Header from "./components/Header";
 import ArticlePage from "./components/ArticlePage";
 import { useState, useEffect } from "react";
 import * as api from "./utils/api";
-
+import ErrorComponent from "./components/ErrorComponent";
 
 function App() {
-
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -17,7 +16,6 @@ function App() {
       setUsers(users);
     });
   }, []);
-
 
   return (
     <BrowserRouter>
@@ -32,6 +30,7 @@ function App() {
             path="/articles/:article_id"
             element={<ArticlePage users={users} />}
           />
+          <Route path="*" element={<ErrorComponent />} />
         </Routes>
       </div>
     </BrowserRouter>

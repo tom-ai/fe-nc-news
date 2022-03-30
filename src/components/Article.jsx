@@ -17,10 +17,9 @@ function Article({
         <h3 className="f3 f2-l">{title}</h3>
 
         <div className="flex items-center mb3">
-          <div className="f6 f5-l br-pill ph3 pv1 dib light-yellow bg-dark-red mr3">
-            <dt>{topic}</dt>
+          <div className="f4 f3-l pointer_default dark-red mr3">
+            <dt>by {username}</dt>
           </div>
-          <dt className="f5 f4-l">2h</dt>
         </div>
         <p className="f4 f3-l mb4">{body}</p>
         <div className="flex justify-center">
