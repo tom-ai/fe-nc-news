@@ -9,7 +9,7 @@ function CommentList({ commentCount, articleId, users }) {
     api.getComments(articleId).then((comments) => {
       setComments(comments);
     });
-  }, [comments]);
+  }, []);
 
   return (
     <>

@@ -15,18 +15,17 @@ function ArticleList({ topics }) {
 
   useEffect(() => {
     setIsLoading(true);
-    api
-      .getArticles(topicSlug)
-      .then((articles) => {
+    try {
+      api.getArticles(topicSlug).then((articles) => {
         console.log("hellop");
         setArticles(articles);
         setCurrentTopic(topicSlug);
         setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log("error!");
-        setError({ err });
       });
+    } catch (err) {
+      console.log("error!");
+      setError(err);
+    }
   }, [topicSlug]);
 
   if (isLoading) return <Loading />;
