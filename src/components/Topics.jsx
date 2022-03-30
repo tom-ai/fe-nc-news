@@ -15,10 +15,10 @@ function Topics() {
         <div className="">
           <Link
             className="w-15 f3 f4-m ttu link dim ph3 pv3 dib light-yellow bg-dark-red"
-            key="latest"
+            key="all"
             to="/"
           >
-            Latest
+            All
           </Link>
           {topics.map((topic) => {
             return (

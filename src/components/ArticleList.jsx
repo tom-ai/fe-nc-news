@@ -15,7 +15,7 @@ function ArticleList({ topics }) {
   useEffect(() => {
     setIsLoading(true);
     api.getArticles(topicSlug).then((articles) => {
-      setArticles((articles)); 
+      setArticles(articles);
       setCurrentTopic(topicSlug);
       setIsLoading(false);
     });
@@ -26,7 +26,7 @@ function ArticleList({ topics }) {
     <div className="pa3">
       <div className=" flex items-center justify-between ">
         <h2 className="f1-l f2 bold ttu o-50">
-          {topicSlug ? topicSlug : "Latest"}
+          {topicSlug ? topicSlug : "All"}
         </h2>
         <Sort currentTopic={currentTopic} setArticles={setArticles} />
       </div>

@@ -23,7 +23,6 @@ function PostComment({ articleId, users }) {
       // do something here like isLoading
     } else {
       e.preventDefault();
-      setFormData(initialFormData);
       api.postComment(articleId, formData);
     }
   };
