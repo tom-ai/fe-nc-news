@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Vote from "./Vote";
+import { useState } from "react";
 
 export function ArticleCard({
   article_id,
@@ -10,6 +11,11 @@ export function ArticleCard({
   comment_count,
   votes,
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleOpen = () => {
+    setIsOpen((currOpen) => !currOpen);
+  };
+
   return (
     <li key={article_id}>
       <article className="mb6 ">
@@ -26,6 +32,7 @@ export function ArticleCard({
               className="br-100 h3 w3 dib mr2 "
               alt="avatar"
             />
+
             <div className="f4 f3-l pointer_default dark-red mr3">
               <dt>@{author}</dt>
             </div>
@@ -36,12 +43,29 @@ export function ArticleCard({
           </div>
           <p className="f4 f3-l mb1">{body.substring(0, 200)}. . .</p>
           <div className="flex justify-center">
+
             <Link
-              to="/"
-              className="f5 f4-l grow no-underline br-pill ba bw1 ph3 pv2 mb3 dark-red"
+              className="f6 f5-l br-pill ph3 pv1 dib no-underline light-yellow bg-dark-red mr3"
+              to={`/topics/${topic}`}
             >
-              Read more...
+              {topic}
             </Link>
+            <dt className="f5 f4-l">2h</dt>
+          </div>
+          <div className="f4 f3-l mb1">
+            {!isOpen && <p>{body.substring(0, 200)}. . .</p>}
+            {isOpen && <p>{body}</p>}
+          </div>
+          <div className="flex justify-center">
+            {!isOpen && (
+              <Link
+                onClick={toggleOpen}
+                to="/"
+                className="f5 f4-l grow no-underline br-pill ba bw1 ph3 pv2 mb3 dark-red"
+              >
+                Read more
+              </Link>
+            )}
           </div>
           <div className="flex items-center justify-between">
             <Link
