@@ -29,10 +29,12 @@ export function ArticleCard({
             <Link to="/" className="f4 f3-l link underline-hover dark-red mr3">
               @{author}
             </Link>
-
-            <div className="f6 f5-l br-pill ph3 pv1 dib light-yellow bg-dark-red mr3">
-              <dt>{topic}</dt>
-            </div>
+            <Link
+              className="f6 f5-l br-pill ph3 pv1 dib no-underline light-yellow bg-dark-red mr3"
+              to={`/topics/${topic}`}
+            >
+              {topic}
+            </Link>
             <dt className="f5 f4-l">2h</dt>
           </div>
           <p className="f4 f3-l mb1">{body.substring(0, 200)}. . .</p>
