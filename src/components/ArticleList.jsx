@@ -9,7 +9,6 @@ function ArticleList({ topics }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { topic_id: topicSlug } = useParams();
-
   const [currentTopic, setCurrentTopic] = useState();
 
   useEffect(() => {
