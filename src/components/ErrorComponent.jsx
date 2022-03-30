@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function ErrorComponent({ status }) {
+export default function ErrorComponent({ status = 404 }) {
   let message;
   if (status === 404) {
     message = "This page does not exist!";

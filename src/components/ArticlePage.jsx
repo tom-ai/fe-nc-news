@@ -15,10 +15,10 @@ function ArticlePage({ users }) {
 
   useEffect(() => {
     setIsLoading(true);
+    setError(null);
     api
       .getArticleById(id)
       .then((article) => {
-        console.log("api");
         setArticle(article);
         setIsLoading(false);
       })

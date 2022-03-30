@@ -4,6 +4,7 @@ import * as api from "../utils/api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "./Loading";
+import ErrorComponent from "./ErrorComponent";
 
 function ArticleList({ topics }) {
   const [articles, setArticles] = useState([]);
@@ -15,21 +16,22 @@ function ArticleList({ topics }) {
 
   useEffect(() => {
     setIsLoading(true);
-    try {
-      api.getArticles(topicSlug).then((articles) => {
-        console.log("hellop");
+    setError(null);
+    api
+      .getArticles(topicSlug)
+      .then((articles) => {
         setArticles(articles);
         setCurrentTopic(topicSlug);
         setIsLoading(false);
+      })
+      .catch(({ response }) => {
+        setError(response.status);
+        setIsLoading(false);
       });
-    } catch (err) {
-      console.log("error!");
-      setError(err);
-    }
   }, [topicSlug]);
 
   if (isLoading) return <Loading />;
-  // if (error) return <p>{error}</p>;
+  if (error) return <ErrorComponent status={error} />;
   return (
     <div className="pa3">
       <div className=" flex items-center justify-between ">
