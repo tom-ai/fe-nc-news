@@ -32,25 +32,18 @@ export function ArticleCard({
               className="br-100 h3 w3 dib mr2 "
               alt="avatar"
             />
-
             <div className="f4 f3-l pointer_default dark-red mr3">
               <dt>@{author}</dt>
             </div>
-            <div className="f6 f5-l br-pill ph3 pv1 dib light-yellow bg-dark-red mr3">
-              <dt>{topic}</dt>
+            <div className="flex items-center">
+              <Link
+                className="f6 f5-l br-pill ph3 pv1 dib no-underline light-yellow bg-dark-red mr3"
+                to={`/topics/${topic}`}
+              >
+                {topic}
+              </Link>
+              <dt className="f5 f4-l">2h</dt>
             </div>
-            <dt className="f5 f4-l">2h</dt>
-          </div>
-          <p className="f4 f3-l mb1">{body.substring(0, 200)}. . .</p>
-          <div className="flex justify-center">
-
-            <Link
-              className="f6 f5-l br-pill ph3 pv1 dib no-underline light-yellow bg-dark-red mr3"
-              to={`/topics/${topic}`}
-            >
-              {topic}
-            </Link>
-            <dt className="f5 f4-l">2h</dt>
           </div>
           <div className="f4 f3-l mb1">
             {!isOpen && <p>{body.substring(0, 200)}. . .</p>}
@@ -58,13 +51,12 @@ export function ArticleCard({
           </div>
           <div className="flex justify-center">
             {!isOpen && (
-              <Link
+              <div
                 onClick={toggleOpen}
-                to="/"
-                className="f5 f4-l grow no-underline br-pill ba bw1 ph3 pv2 mb3 dark-red"
+                className="f5 f4-l grow no-underline pointer br-pill ba bw1 ph3 pv2 mb3 dark-red"
               >
                 Read more
-              </Link>
+              </div>
             )}
           </div>
           <div className="flex items-center justify-between">
