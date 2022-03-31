@@ -2,12 +2,31 @@ import { useEffect, useState } from "react";
 import * as api from "../utils/api";
 
 function PostComment({ articleId, users }) {
+  const [isInputDisabled, setIsInputDisabled] = useState(true);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+  const dropdownPlaceholder = "select a user";
+  const inputPlaceholder = "Comment...";
+
   const initialFormData = {
-    username: "",
+    username: dropdownPlaceholder,
     body: "",
   };
 
   const [formData, setFormData] = useState(initialFormData);
+
+  useEffect(() => {
+    if (formData.username !== dropdownPlaceholder) {
+      setIsInputDisabled(false);
+    } else if (formData.username === dropdownPlaceholder) {
+      setIsInputDisabled(true);
+    }
+    if (formData.body !== "") {
+      setIsButtonDisabled(false);
+    } else if (formData.body === "") {
+      setIsButtonDisabled(true);
+    }
+  }, [formData]);
 
   const handleChange = (e) => {
     setFormData({
@@ -17,56 +36,55 @@ function PostComment({ articleId, users }) {
   };
 
   const handleSubmit = (e) => {
-    if (formData.username === "") {
-      // do something here like isLoading
-    } else if (formData.body === "") {
-      // do something here like isLoading
-    } else {
-      e.preventDefault();
-      api.postComment(articleId, formData);
-    }
+    e.preventDefault();
+    api.postComment(articleId, formData);
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div>
-          <div className="flex items-end mb2">
-            <label htmlFor="comment" className="f5 f4-l b db mr2">
-              Write comment <span className="normal">as</span>
-            </label>
-            <label htmlFor="username"></label>
-            <select
-              name="username"
-              id="username"
-              className="f5 f4-l ph2 pv1 br3"
-              onChange={handleChange}
-            >
-              <option key="default">Choose Username</option>
-              {users.map(({ username }) => {
-                return (
-                  <option key={username} id={username} value={username}>
-                    {username}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-
-          <input
-            defaultValue={""}
+        <div className="flex items-center mb2">
+          <label htmlFor="comment" className="f5 f4-l b db mr2">
+            Write comment <span className="normal">as</span>
+          </label>
+          <label htmlFor="username"></label>
+          <select
+            name="username"
+            id="username"
+            className="f5 f4-l ph2 pv1 br3"
             onChange={handleChange}
-            id="body"
-            name="body"
-            className="f4 f3-l db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2"
-          ></input>
+          >
+            <option key="default">{dropdownPlaceholder}</option>
+            {users.map(({ username }) => {
+              return (
+                <option key={username} id={username} value={username}>
+                  {username}
+                </option>
+              );
+            })}
+          </select>
         </div>
+        <input
+          placeholder={inputPlaceholder}
+          onFocus={(e) => (e.target.placeholder = "")}
+          onBlur={(e) => (e.target.placeholder = inputPlaceholder)}
+          disabled={isInputDisabled}
+          defaultValue={""}
+          onChange={handleChange}
+          id="body"
+          name="body"
+          className={`f4 f3-l ${
+            isInputDisabled ? "o-50" : ""
+          } db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2`}
+        ></input>
       </form>
-
       <button
+        disabled={isButtonDisabled}
         type="submit"
         onClick={handleSubmit}
-        className="f5 f4-l grow no-underline br-pill ba bw1 ph3 pv2 mb3 b--dark-red dark-red bg-light-yellow"
+        className={`f5 f4-l ${
+          isButtonDisabled ? "o-50" : "grow"
+        } no-underline br-pill ba bw1 ph3 pv2 mb3 b--dark-red dark-red bg-light-yellow`}
       >
         Post
       </button>
