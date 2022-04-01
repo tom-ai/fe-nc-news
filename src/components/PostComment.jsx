@@ -48,7 +48,7 @@ function PostComment({ articleId, users, setLoggedInUser, setHasPosted }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="flex items-center mb2">
+        <div className="flex items-center mb3">
           <label htmlFor="comment" className="f5 f4-l b db mr2">
             Edit <span className="normal">as</span>
           </label>
@@ -81,7 +81,7 @@ function PostComment({ articleId, users, setLoggedInUser, setHasPosted }) {
           name="body"
           className={`f4 f3-l ${
             isInputDisabled ? "o-50" : ""
-          } db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2`}
+          } db border-box hover-black w-100 measure ba b--black-20 ph2 pv3 br2 mb3`}
         ></input>
       </form>
       <button
