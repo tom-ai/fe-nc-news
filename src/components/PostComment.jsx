@@ -50,7 +50,7 @@ function PostComment({ articleId, users, setLoggedInUser, setHasPosted }) {
       <form onSubmit={handleSubmit}>
         <div className="flex items-center mb2">
           <label htmlFor="comment" className="f5 f4-l b db mr2">
-            Write comment <span className="normal">as</span>
+            Edit <span className="normal">as</span>
           </label>
           <label htmlFor="username"></label>
           <select

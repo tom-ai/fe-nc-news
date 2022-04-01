@@ -47,6 +47,7 @@ function CommentList({ commentCount, articleId, users }) {
                 comment={comment}
                 handleDelete={handleDelete}
                 loggedInUser={loggedInUser}
+                hasPosted={hasPosted}
               />
             );
           })}
