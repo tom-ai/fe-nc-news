@@ -32,7 +32,7 @@ export function ArticleCard({
             </div>
             <div className="flex items-center">
               <Link
-                className="f6 f5-l br-pill ph3 pv1 dib no-underline light-yellow bg-dark-red mr3"
+                className="f6 f5-l br-pill ph3 pv1 dib no-underline washed-yellow bg-dark-red mr3"
                 to={`/topics/${topic}`}
               >
                 {topic}

@@ -40,7 +40,7 @@ function Vote({ articleId, votes }) {
           disabled={isUpDisabled}
           id="up"
           onClick={handleClick}
-          className="grow dib f4 f3-l no-underline pa2 pointer bw0 bg-light-yellow"
+          className="grow dib f4 f3-l no-underline pa2 pointer bw0 bg-washed-yellow"
         >
           👍
         </button>
@@ -48,7 +48,7 @@ function Vote({ articleId, votes }) {
           disabled={isDownDisabled}
           id="down"
           onClick={handleClick}
-          className="grow dib f4 f3-l no-underline pa2 pointer bw0 bg-light-yellow"
+          className="grow dib f4 f3-l no-underline pa2 pointer bw0 bg-washed-yellow"
         >
           👎
         </button>

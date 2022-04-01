@@ -14,7 +14,7 @@ function Topics() {
       <nav>
         <div className="">
           <Link
-            className="w-15 f3 f4-m ttu link dim ph3 pv3 dib light-yellow bg-dark-red"
+            className="w-15 f3 f4-m ttu link dim ph3 pv3 dib washed-yellow bg-dark-red"
             key="all"
             to="/"
           >
@@ -23,7 +23,7 @@ function Topics() {
           {topics.map((topic) => {
             return (
               <Link
-                className="w-15 f3 f4-m ttu link dim ph3 pv3 dib light-yellow bg-dark-red"
+                className="w-15 f3 f4-m ttu link dim ph3 pv3 dib washed-yellow bg-dark-red"
                 key={topic.slug}
                 to={`/topics/${topic.slug}`}
               >

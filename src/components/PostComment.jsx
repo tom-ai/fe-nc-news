@@ -90,7 +90,7 @@ function PostComment({ articleId, users, setLoggedInUser, setHasPosted }) {
         onClick={handleSubmit}
         className={`f5 f4-l ${
           isButtonDisabled ? "o-50" : "grow"
-        } no-underline br-pill ba bw1 ph3 pv2 mb3 b--dark-red dark-red bg-light-yellow`}
+        } no-underline br-pill ba bw1 ph3 pv2 mb3 b--dark-red dark-red bg-washed-yellow`}
       >
         Post
       </button>
