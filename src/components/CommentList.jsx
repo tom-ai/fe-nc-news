@@ -6,18 +6,22 @@ import PostComment from "./PostComment";
 function CommentList({ commentCount, articleId, users }) {
   const [comments, setComments] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [isDeleted, setIsDeleted] = useState(false);
+  const [hasPosted, setHasPosted] = useState();
 
   useEffect(() => {
     api.getComments(articleId).then((comments) => {
       setComments(comments);
+      setIsDeleted(false);
+      console.log("in useeffect");
     });
-  }, []);
+  }, [isDeleted, hasPosted]);
 
-  const handleDelete = () => {
-    console.log("in delete!");
+  const handleDelete = (commentId, articleId) => {
+    api.deleteComment(commentId, articleId).then((status) => {
+      if (status === 204) setIsDeleted(true);
+    });
   };
-
-
 
   return (
     <>
@@ -35,6 +39,7 @@ function CommentList({ commentCount, articleId, users }) {
           users={users}
           loggedInUser={loggedInUser}
           setLoggedInUser={setLoggedInUser}
+          setHasPosted={setHasPosted}
         />
         <ul className="list pl0">
           {comments.map((comment) => {

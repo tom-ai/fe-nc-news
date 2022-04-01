@@ -1,5 +1,4 @@
 import axios from "axios";
-import PostComment from "../components/PostComment";
 
 const api = axios.create({
   baseURL: "https://nc-news-tomharris.herokuapp.com/api",
@@ -54,13 +53,13 @@ export function getUsers() {
 }
 
 export function postComment(articleId, comment) {
-  return api
-    .post(`/articles/${articleId}/comments`, comment)
-    .then((res) => {
-      console.log("in api", res);
-      return res.data.postedComment;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return api.post(`/articles/${articleId}/comments`, comment).then((res) => {
+    return res.data.postedComment;
+  });
+}
+
+export function deleteComment(commentId) {
+  return api.delete(`/comments/${commentId}`).then((res) => {
+    return res.status;
+  });
 }
