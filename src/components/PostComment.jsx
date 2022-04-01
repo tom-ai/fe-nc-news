@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import * as api from "../utils/api";
 
-function PostComment({ articleId, users }) {
+function PostComment({ articleId, users, setLoggedInUser }) {
   const [isInputDisabled, setIsInputDisabled] = useState(true);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-
   const dropdownPlaceholder = "select a user";
   const inputPlaceholder = "Comment...";
 
@@ -18,8 +17,10 @@ function PostComment({ articleId, users }) {
   useEffect(() => {
     if (formData.username !== dropdownPlaceholder) {
       setIsInputDisabled(false);
+      setLoggedInUser(formData.username);
     } else if (formData.username === dropdownPlaceholder) {
       setIsInputDisabled(true);
+      setLoggedInUser(null);
     }
     if (formData.body !== "") {
       setIsButtonDisabled(false);
@@ -39,6 +40,7 @@ function PostComment({ articleId, users }) {
     e.preventDefault();
     api.postComment(articleId, formData);
   };
+
 
   return (
     <>

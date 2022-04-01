@@ -5,11 +5,19 @@ import PostComment from "./PostComment";
 
 function CommentList({ commentCount, articleId, users }) {
   const [comments, setComments] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
   useEffect(() => {
     api.getComments(articleId).then((comments) => {
       setComments(comments);
     });
   }, []);
+
+  const handleDelete = () => {
+    console.log("in delete!");
+  };
+
+  console.log(loggedInUser);
 
   return (
     <>
@@ -25,10 +33,19 @@ function CommentList({ commentCount, articleId, users }) {
           articleId={articleId}
           setComments={setComments}
           users={users}
+          loggedInUser={loggedInUser}
+          setLoggedInUser={setLoggedInUser}
         />
         <ul className="list pl0">
           {comments.map((comment) => {
-            return <CommentCard key={comment.comment_id} comment={comment} />;
+            return (
+              <CommentCard
+                key={comment.comment_id}
+                comment={comment}
+                handleDelete={handleDelete}
+                loggedInUser={loggedInUser}
+              />
+            );
           })}
         </ul>
       </div>

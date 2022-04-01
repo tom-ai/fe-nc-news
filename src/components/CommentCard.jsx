@@ -1,6 +1,12 @@
-function CommentCard({ comment }) {
-  const { comment_id, body, author, votes, created_at } = comment;
+import { useState } from "react";
 
+function CommentCard({ comment, loggedInUser, handleDelete }) {
+  const { comment_id, body, author, votes, created_at } = comment;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  if (loggedInUser === author) {
+    // setIsLoggedIn(true);
+  }
   return (
     <>
       <li>
