@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
 function Header() {
   return (
     <div className="pa3">
-      <h1 className="f4 f5-m">NC News</h1>
+      <Link to="/" className="f4 f5-m b pointer_default dark-red no-underline">
+        TH News
+      </Link>
     </div>
   );
 }
