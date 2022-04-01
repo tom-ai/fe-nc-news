@@ -39,8 +39,9 @@ function PostComment({ articleId, users, setLoggedInUser, setHasPosted }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setHasPosted(false);
-    api.postComment(articleId, formData).then((response) => {
+    api.postComment(articleId, formData).then(() => {
       setHasPosted(true);
+      setFormData(initialFormData);
     });
   };
 
@@ -53,6 +54,7 @@ function PostComment({ articleId, users, setLoggedInUser, setHasPosted }) {
           </label>
           <label htmlFor="username"></label>
           <select
+            value={formData.username}
             name="username"
             id="username"
             className="f5 f4-l ph2 pv1 br3"
@@ -69,11 +71,11 @@ function PostComment({ articleId, users, setLoggedInUser, setHasPosted }) {
           </select>
         </div>
         <input
+          value={formData.body}
           placeholder={inputPlaceholder}
           onFocus={(e) => (e.target.placeholder = "")}
           onBlur={(e) => (e.target.placeholder = inputPlaceholder)}
           disabled={isInputDisabled}
-          defaultValue={""}
           onChange={handleChange}
           id="body"
           name="body"

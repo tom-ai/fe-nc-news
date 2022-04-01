@@ -7,13 +7,12 @@ function CommentList({ commentCount, articleId, users }) {
   const [comments, setComments] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isDeleted, setIsDeleted] = useState(false);
-  const [hasPosted, setHasPosted] = useState();
+  const [hasPosted, setHasPosted] = useState(null);
 
   useEffect(() => {
     api.getComments(articleId).then((comments) => {
       setComments(comments);
       setIsDeleted(false);
-      console.log("in useeffect");
     });
   }, [isDeleted, hasPosted]);
 
@@ -35,7 +34,6 @@ function CommentList({ commentCount, articleId, users }) {
 
         <PostComment
           articleId={articleId}
-          setComments={setComments}
           users={users}
           loggedInUser={loggedInUser}
           setLoggedInUser={setLoggedInUser}

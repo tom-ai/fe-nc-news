@@ -34,9 +34,6 @@ function Sort({ currentTopic, setArticles }) {
     }
   };
 
-  // console.log("sort: ", sort);
-  // console.log("order: ", order);
-
   useEffect(() => {
     api.getArticles(currentTopic, sort, order).then((articles) => {
       setArticles(articles);
