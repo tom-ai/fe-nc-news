@@ -17,7 +17,7 @@ function CommentList({ commentCount, articleId, users }) {
     console.log("in delete!");
   };
 
-  console.log(loggedInUser);
+
 
   return (
     <>

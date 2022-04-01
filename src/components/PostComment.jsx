@@ -27,7 +27,7 @@ function PostComment({ articleId, users, setLoggedInUser }) {
     } else if (formData.body === "") {
       setIsButtonDisabled(true);
     }
-  }, [formData]);
+  }, [formData, setLoggedInUser]);
 
   const handleChange = (e) => {
     setFormData({
@@ -40,7 +40,6 @@ function PostComment({ articleId, users, setLoggedInUser }) {
     e.preventDefault();
     api.postComment(articleId, formData);
   };
-
 
   return (
     <>
