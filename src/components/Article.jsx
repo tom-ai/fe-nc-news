@@ -17,7 +17,7 @@ function Article({
         <h3 className="f3 f2-l">{title}</h3>
 
         <div className="flex items-center mb3">
-          <div className="f4 f3-l pointer_default dark-red mr3">
+          <div className="f4 f3-l i pointer_default dark-red mr3">
             <dt>by {username}</dt>
           </div>
         </div>

@@ -27,13 +27,8 @@ export function ArticleCard({
             <h3 className="f3 f2-l">{title}</h3>
           </Link>
           <div className="flex items-center mb3 ">
-            {/* <img
-              src="https://www.springboardstories.co.uk/images/gallery/products/Topics/myths/resources/GreenMan/SS7-A4-Poster.jpg"
-              className="br-100 h3 w3 dib mr2 "
-              alt="avatar"
-            /> */}
-            <div className="f4 f3-l pointer_default dark-red mr3">
-              <dt>@{author}</dt>
+            <div className="f4 f3-l i pointer_default dark-red mr3">
+              <dt>by {author}</dt>
             </div>
             <div className="flex items-center">
               <Link
@@ -42,7 +37,6 @@ export function ArticleCard({
               >
                 {topic}
               </Link>
-              <dt className="f5 f4-l">2h</dt>
             </div>
           </div>
           <div className="f4 f3-l mb1">
