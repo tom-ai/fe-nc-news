@@ -1,4 +1,3 @@
-![Article in news app](https://ibb.co/JxYkQmr)
 # TH News App
 TH News is a reddit-style news app that allows users to read, like and comment on articles.
 <br>
