@@ -1,5 +1,5 @@
 # TH News App
-TH News is a reddit-style news app that allows users to read, like and comment on articles.
+A reddit-style news app built with React, that allows users to read, like and comment on articles.
 <br>
 View the hosted app on Netlify! **[View hosted version](https://th-news.netlify.app/)**
 ![Article on News App](./src/assets/th-news-1.png)
