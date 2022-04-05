@@ -1,7 +1,7 @@
 # TH News App
 TH News is a reddit-style news app that allows users to read, like and comment on articles.
 <br>
-View the hosted app on Netlify! [Enjoy TH News](https://th-news.netlify.app/)**
+View the hosted app on Netlify! **[View hosted version](https://th-news.netlify.app/)**
 ![Article on News App](./src/assets/th-news-1.png)
 ## Running the app locally
 To run this project locally, `Node.js` is required and will need to be at least `v17.7.2`
