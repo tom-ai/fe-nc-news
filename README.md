@@ -1,4 +1,4 @@
-# Readme
+# TH News App
 TH News is a reddit-style news app that allows users to read, like and comment on articles.
 <br>
 Link To Hosted Version:  [TH News](https://th-news.netlify.app/) 
