@@ -1,8 +1,8 @@
-![Article on News App](./src/assets/th-news-1.png)
 # TH News App
 TH News is a reddit-style news app that allows users to read, like and comment on articles.
 <br>
 **Link To Hosted Version:  [TH News](https://th-news.netlify.app/)**
+![Article on News App](./src/assets/th-news-1.png)
 ## Running the app locally
 To run this project locally, `Node.js` is required and will need to be at least `v17.7.2`
 1. In your CLI, navigate to a directory and run `git clone https://github.com/tom-ai/fe-nc-news.git`
