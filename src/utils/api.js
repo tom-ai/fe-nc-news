@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 
 const api = axios.create({
-  baseURL: "https://nc-news-tomharris.herokuapp.com/api",
+  baseURL: 'https://th-news-api-6c1bba23d234.herokuapp.com/api',
 });
 
 export function getTopics() {
-  return api.get("/topics").then((res) => {
+  return api.get('/topics').then((res) => {
     return res.data.topics;
   });
 }
@@ -47,7 +47,7 @@ export function getComments(articleId) {
 }
 
 export function getUsers() {
-  return api.get("/users").then((res) => {
+  return api.get('/users').then((res) => {
     return res.data.users;
   });
 }
